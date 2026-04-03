@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, Suspense, useMemo, useState } from "react";
 import { getSupabaseBrowserClient } from "../../lib/supabase";
 
 type Mode = "login" | "signup";
@@ -22,7 +22,7 @@ function normalizeAuthError(message: string, mode: Mode) {
   return message;
 }
 
-export default function AuthPage() {
+function AuthPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const initialMode = searchParams.get("mode") === "signup" ? "signup" : "login";
@@ -400,5 +400,25 @@ export default function AuthPage() {
         </section>
       </div>
     </main>
+  );
+}
+
+export default function AuthPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="min-h-screen bg-[radial-gradient(circle_at_top,rgba(176,141,87,0.18),transparent_25%),linear-gradient(180deg,#f4efe6_0%,#efe7db_100%)] px-6 py-10">
+          <div className="mx-auto max-w-3xl">
+            <section className="rounded-[32px] border border-[#e0d6c7] bg-[#fbf8f2] p-8 shadow-[0_24px_80px_rgba(41,37,36,0.08)] md:p-10">
+              <div className="rounded-2xl border border-[#dfd3c2] bg-white px-6 py-4 text-[#5f564c] shadow-sm">
+                Loading authentication...
+              </div>
+            </section>
+          </div>
+        </main>
+      }
+    >
+      <AuthPageContent />
+    </Suspense>
   );
 }
