@@ -1,0 +1,27 @@
+{
+  "name": "mentor-student-platform",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/web",
+    "apps/server"
+  ],
+  "scripts": {
+    "build": "npm run build:web && npm run build:server",
+    "dev:web": "npm --workspace apps/web run dev",
+    "dev:server": "npm --workspace apps/server run dev",
+    "dev:collab": "node apps/web/node_modules/y-websocket/bin/server.js",
+    "build:web": "npm --workspace apps/web run build",
+    "build:server": "npm --workspace apps/server run build",
+    "start:web": "npm --workspace apps/web run start",
+    "start:server": "npm --workspace apps/server run start",
+    "typecheck:web": "npx tsc -p apps/web/tsconfig.json --noEmit",
+    "typecheck:server": "npx tsc -p apps/server/tsconfig.json --noEmit"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "@y/websocket-server": "^0.1.5"
+  }
+}

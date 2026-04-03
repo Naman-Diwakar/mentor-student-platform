@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(circle at top, rgba(214, 228, 255, 0.7), transparent 35%),
+    linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+  color: #0f172a;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+::selection {
+  background: rgba(59, 130, 246, 0.2);
+}
+
+.app-shell {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.9));
+  backdrop-filter: blur(14px);
+}
+
+.meet-shell {
+  background:
+    radial-gradient(circle at top, rgba(66, 133, 244, 0.14), transparent 28%),
+    linear-gradient(180deg, #111315 0%, #17181b 45%, #101114 100%);
+}
+
+.yRemoteSelection {
+  background-color: rgba(184, 135, 70, 0.18);
+  border-left: 2px solid rgba(184, 135, 70, 0.55);
+}
+
+.yRemoteSelectionHead {
+  position: relative;
+  border-left-width: 2px;
+  border-left-style: solid;
+  border-left-color: rgba(184, 135, 70, 0.95);
+}
+
+.yRemoteSelectionHead::after {
+  position: absolute;
+  top: -1.4rem;
+  left: -2px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #2f3a32;
+  color: #f7f3ea;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
